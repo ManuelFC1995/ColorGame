@@ -1,0 +1,29 @@
+.juego{
+    text-align: center;
+   
+  
+}
+.ganador{
+    text-align: center;
+}
+body{
+background-color:lightyellow;
+}
+.BotonElijeAzul{
+  
+   font-size: 30px;
+   font-family: fantasy;
+   
+}
+
+.BotonElijeRojo{
+  
+    font-size: 30px;
+    padding-top: 10px;
+font-family: fantasy;
+ }
+
+ .BotonAzul{
+     margin-top: 20px;
+     padding-top: 20px;
+ }

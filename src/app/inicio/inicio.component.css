@@ -1,0 +1,16 @@
+h1{
+    text-align: center;
+    font-size: 90px;
+    font-family: fantasy;
+ color: blue;
+}
+h2{
+    text-align: center;
+    font-size: 80px;
+    font-family: fantasy;
+    color :darkred;
+}
+
+.inicio{
+    background-color:lightgrey;
+}
