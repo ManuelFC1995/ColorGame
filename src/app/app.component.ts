@@ -44,13 +44,13 @@ export class AppComponent {
   }
   public Red(){
    
-    this.gameS.postRed( "Red" )
-    .subscribe(newRed => {
+    this.gameS.postpoint( "red" )
+    .subscribe(newPoint => {
     })
   }
   public Blue(){
-    this.gameS.postBlue( "Blue" )
-    .subscribe(newBlue => {
+    this.gameS.postpoint( "blue" )
+    .subscribe(newPoint => {
     })
   }
   

@@ -3,6 +3,8 @@ import { Observable, Observer } from 'rxjs';
 
 import { HttpHeaders,HttpClient,HttpResponse} from '@angular/common/http';
 import {map} from 'rxjs/operators';
+import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { environment } from 'src/environments/environment';
 'rxjs/Rx';
 @Injectable({
   providedIn: 'root'
@@ -22,9 +24,11 @@ export class GameService {
   public myObserver:Observer<any>=null;  //input 
   public myObservable:Observable<any>=null;  //output
 
-
-  constructor(public http: HttpClient) { 
+  private myPts:AngularFirestoreCollection<any>;
+  
+  constructor(public http: HttpClient,private fire:AngularFirestore) { 
     this.createObservable();
+    this.myPts=fire.collection<any>(environment.PuntosCollection);
   }
 
   public createObservable():void{
@@ -32,39 +36,28 @@ export class GameService {
       this.myObserver=observer;
     });
   }
-  postRed( Red: any) {
-    const newRed = JSON.stringify(Red);
+
+
+  postpoint( point: any) {
+    const newPoint = JSON.stringify(point);
     const headers = new HttpHeaders({ 
     'Content-Type': 'application/json'
     });
-    return this.http.post( this.presURLR, newRed, {headers}).pipe
+    return this.http.post( this.presURLB, newPoint, {headers}).pipe
     (map( res => {
     console.log(res); 
     return res;
     }));
   }
 
-  postBlue( Blue: any) {
-    const newBlue = JSON.stringify(Blue);
-    const headers = new HttpHeaders({ 
-    'Content-Type': 'application/json'
-    });
-    return this.http.post( this.presURLB, newBlue, {headers}).pipe
-    (map( res => {
-    console.log(res); 
-    return res;
-    }));
-  }
-
-  getRedPoints(){
-    return this.http.get(this.presURLR).pipe(map(res=>res));
-  
-  }
- 
-
-    getBluePoints(){
-      return this.http.get(this.presURLB).pipe(map(res=>res));
-    
+  getPoints():
+   Observable<any>{
+      return this.myPts.get();
     }
+  
+  
  
+
+
+  
 }
